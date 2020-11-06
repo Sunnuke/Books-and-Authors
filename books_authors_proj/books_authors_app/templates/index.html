@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div id="BookBox">
+        <div class="LeftBox">
+            <form action="/add/Book" method="POST">
+                <h1>Add a Book</h1>
+                <input type="text" name="title" id="title" placeholder="Title of Book" required><br>
+                <textarea name="desc" id="desc" cols="22" rows="10" placeholder="Description of Book"></textarea><br>
+                <button type="submit">Add</button>
+            </form>
+        </div>
+        <div class="RightBox">
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Action</th>
+                </tr>
+                {% for book in all_books %}
+                <tr>
+                    <td>{{ book.id }}</td>
+                    <td>{{ book.title }}</td>
+                    <td><a href="/books/{{ book.id }}">View</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</body>
+</html>

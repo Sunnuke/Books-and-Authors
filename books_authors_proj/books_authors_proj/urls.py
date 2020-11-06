@@ -17,6 +17,6 @@ Including another URLconf
 from django.urls import path, include
 
 urlpatterns = [
-    path(' ', ('books_authors_app.urls')),
+    path('', include('books_authors_app.urls')),
     # path('admin/', admin.site.urls),
 ]
