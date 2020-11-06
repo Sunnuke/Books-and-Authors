@@ -13,6 +13,7 @@ def index(request):
 
 # Takes user input for a new book and adds it to the database
 def addBook(request):
+    Book.objects.create(title=request.POST['title'],desc=request.POST['desc'])
     return redirect('/')
 
 # Takes the user to a new template and allow them to view the details of the selected book

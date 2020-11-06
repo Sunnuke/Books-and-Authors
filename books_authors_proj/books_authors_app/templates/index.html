@@ -10,7 +10,8 @@
 <body>
     <div id="BookBox">
         <div class="LeftBox">
-            <form action="/add/Book" method="POST">
+            <form action="/add/book" method="POST">
+                {% csrf_token %}
                 <h1>Add a Book</h1>
                 <input type="text" name="title" id="title" placeholder="Title of Book" required><br>
                 <textarea name="desc" id="desc" cols="22" rows="10" placeholder="Description of Book"></textarea><br>
