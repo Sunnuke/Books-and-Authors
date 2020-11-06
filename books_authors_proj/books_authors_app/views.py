@@ -16,10 +16,23 @@ def addBook(request):
     Book.objects.create(title=request.POST['title'],desc=request.POST['desc'])
     return redirect('/')
 
+# Adds author to the viewed book
+def addauthorToBook(request, num):
+    key = int(num)
+    auth = int(request.POST['alist'])
+    Book.objects.get(id=key).authors.add(Author.objects.get(id=auth))
+    return redirect('/')
+
 # Takes the user to a new template and allow them to view the details of the selected book
-def viewBook(request):
+def viewBook(request, num):
+    key = int(num)
+    print(key)
     context = {
-        'all_books': Book.objects.all(),
-        'all_Authors': Author.objects.all()
+        'book': Book.objects.get(id=key).authors.all(),
+        'viewbook': Book.objects.get(id=key),
+        'Authors': Author.objects.all(),
     }
-    return render(request, '', context)
+    return render(request, 'view.html', context)
+
+
+

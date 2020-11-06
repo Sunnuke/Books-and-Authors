@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Books</title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
 </head>
@@ -29,7 +29,9 @@
                 <tr>
                     <td>{{ book.id }}</td>
                     <td>{{ book.title }}</td>
-                    <td><a href="/books/{{ book.id }}">View</a></td>
+                    <td>
+                        <a href="/books/{{ book.id }}">View</a>
+                    </td>
                 </tr>
                 {% endfor %}
             </table>
